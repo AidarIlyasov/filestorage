@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"filestorage/p2p"
+	"log"
+)
 
 func main() {
-	fmt.Println("R")
+	tr := p2p.NewTCPTransport(":3000")
+	if err := tr.ListenAndAccept(); err != nil {
+		log.Fatal(err)
+	}
+
+	select {}
 }
